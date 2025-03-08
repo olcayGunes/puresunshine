@@ -1,39 +1,39 @@
 'use client';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState<string>("#home");
 
-  const menuItems = [
-    { name: 'Home', href: '#home' },
-    { name: 'Services', href: '#services' },
-    { name: 'Why Us', href: '#why-us' },
-    { name: 'Contact', href: '#contact' },
-  ];
+  const menuItems = useMemo(() => [
+    { href: "#home", text: "Home" },
+    { href: "#services", text: "Services" },
+    { href: "#why-us", text: "Why Us" },
+    { href: "#contact", text: "Contact" },
+  ], []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = menuItems.map(item => item.href.substring(1));
-      const currentSection = sections.find(section => {
-        const element = document.getElementById(section);
+      const currentScrollPos = window.pageYOffset;
+      menuItems.forEach((item) => {
+        const element = document.getElementById(item.href.slice(1));
         if (element) {
-          const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          const { offsetTop, offsetHeight } = element;
+          if (
+            currentScrollPos >= offsetTop - 100 &&
+            currentScrollPos < offsetTop + offsetHeight - 100
+          ) {
+            setActiveSection(item.href);
+          }
         }
-        return false;
       });
-      
-      if (currentSection) {
-        setActiveSection(currentSection);
-      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [menuItems]);
 
   return (
     <header className="fixed top-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
@@ -47,13 +47,13 @@ const Header = () => {
           <div className="hidden md:flex space-x-8">
             {menuItems.map((item) => (
               <Link
-                key={item.name}
+                key={item.text}
                 href={item.href}
                 className={`text-gray-600 hover:text-indigo-700 transition-colors relative ${
                   activeSection === item.href.substring(1) ? 'text-indigo-700 font-semibold' : ''
                 }`}
               >
-                {item.name}
+                {item.text}
                 {activeSection === item.href.substring(1) && (
                   <motion.div
                     layoutId="activeSection"
@@ -100,14 +100,14 @@ const Header = () => {
             <div className="px-2 pt-2 pb-3 space-y-1">
               {menuItems.map((item) => (
                 <Link
-                  key={item.name}
+                  key={item.text}
                   href={item.href}
                   className={`block px-3 py-2 text-gray-600 hover:text-indigo-700 transition-colors ${
                     activeSection === item.href.substring(1) ? 'text-indigo-700 font-semibold bg-indigo-50 rounded-lg' : ''
                   }`}
                   onClick={() => setIsOpen(false)}
                 >
-                  {item.name}
+                  {item.text}
                 </Link>
               ))}
             </div>

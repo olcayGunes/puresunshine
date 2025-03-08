@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://puresunshine.vercel.app/sitemap.xml 

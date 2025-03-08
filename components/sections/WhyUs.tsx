@@ -33,9 +33,9 @@ const WhyUs = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
+            className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl"
           >
-            Why Choose Pure Sunshine
+            Why You&apos;ll Love Working With Us
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -44,7 +44,7 @@ const WhyUs = () => {
             transition={{ delay: 0.2 }}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            We're committed to helping your brand succeed on Amazon through our comprehensive services and expertise
+            We&apos;re committed to helping your brand succeed on Amazon through our comprehensive services and expertise
           </motion.p>
         </div>
 

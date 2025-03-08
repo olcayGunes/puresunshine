@@ -13,7 +13,7 @@ const Contact = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { isSubmitting, errors },
     reset
   } = useForm<FormData>();
 
@@ -43,7 +43,7 @@ const Contact = () => {
         type: 'success',
         message: 'Thank you for your message! We will get back to you soon.'
       });
-    } catch (error) {
+    } catch (_err) {
       setSubmitStatus({
         type: 'error',
         message: 'Failed to send message. Please try again later.'
@@ -62,7 +62,7 @@ const Contact = () => {
               viewport={{ once: true }}
               className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4"
             >
-              Let's Grow Together
+              Let&apos;s Grow Together
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -71,7 +71,7 @@ const Contact = () => {
               transition={{ delay: 0.2 }}
               className="text-lg text-gray-600"
             >
-              Ready to take your brand to the next level? Contact us today and let's start working together.
+              Ready to take your brand to the next level? Contact us today and let&apos;s start working together.
             </motion.p>
           </div>
 
@@ -148,12 +148,22 @@ const Contact = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               type="submit"
-              className="w-full bg-[rgb(28,41,97)] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[rgb(22,33,78)] transition-colors"
-              disabled={submitStatus.type === 'success'}
+              className={`w-full bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors ${
+                isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+              }`}
+              disabled={isSubmitting}
             >
-              {submitStatus.type === 'success' ? 'Message Sent!' : 'Send Message'}
+              {isSubmitting ? 'Sending...' : 'Send Message'}
             </motion.button>
           </motion.form>
+
+          <p className="text-lg text-gray-600 mb-8">
+            Let&apos;s discuss how we can help your business thrive on Amazon.
+          </p>
+
+          <p className="text-sm text-gray-500 mt-2">
+            We&apos;ll get back to you within 24 hours.
+          </p>
         </div>
       </div>
     </section>

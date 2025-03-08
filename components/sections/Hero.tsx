@@ -24,11 +24,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
-              Accelerate Your Brand's Growth on Amazon
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+              Let&apos;s Grow Your Amazon Business Together
             </h1>
-            <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
-              Partner with Pure Sunshine to maximize your product's potential in the world's largest marketplace. We handle everything from listing optimization to customer service.
+            <p className="mt-6 text-lg leading-8 text-gray-600">
+              We&apos;re here to help you succeed. Let&apos;s unlock your product&apos;s full potential on Amazon.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
