@@ -23,13 +23,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://puresunshine.vercel.app",
+    url: "https://www.puresunshine.net",
     siteName: "Pure Sunshine",
     title: "Pure Sunshine - Your Trusted Amazon Growth Partner",
     description: "Partner with Pure Sunshine to maximize your product's potential in the world's largest marketplace",
     images: [
       {
-        url: "/og-image.jpg", // Bu resmi daha sonra ekleyeceğiz
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Pure Sunshine",
@@ -76,6 +76,29 @@ export default function RootLayout({
             gtag('config', 'G-7M08WCD29S');
           `}
         </Script>
+        <Script
+          id="schema-markup"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "name": "Pure Sunshine",
+              "url": "https://www.puresunshine.net",
+              "logo": "https://www.puresunshine.net/images/logo.jpg",
+              "description": "Partner with Pure Sunshine to maximize your product's potential in the world's largest marketplace. Expert Amazon consulting, optimization, and growth strategies.",
+              "address": {
+                "@type": "PostalAddress",
+                "addressCountry": "US"
+              },
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "contactType": "customer service",
+                "email": "contact@puresunshine.net"
+              }
+            })
+          }}
+        />
       </head>
       <body className={inter.className}>{children}</body>
     </html>
