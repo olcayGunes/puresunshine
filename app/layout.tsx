@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     maximumScale: 1,
   },
   verification: {
-    google: "google-site-verification-code", // Google Search Console'dan alınacak
+    google: "vXWE8yiI1v6PqyDod3HKi3W1Ho6Udakv57r10SMxqE0"
   },
   icons: {
     icon: '/favicon.ico',
