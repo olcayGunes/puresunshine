@@ -5,16 +5,17 @@ import Image from 'next/image';
 const Hero = () => {
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center">
-      {/* Arka plan görseli */}
+      {/* Arka plan görseli ve overlay */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/hero-image.jpg"
           alt="Office Interior"
           fill
-          className="object-cover brightness-50"
+          className="object-cover"
           priority
           sizes="100vw"
         />
+        <div className="absolute inset-0 bg-black/50" /> {/* Koyu overlay ekledim */}
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -24,11 +25,11 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Let&apos;s Grow Your Amazon Business Together
+            <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+              Accelerate Your Brand&apos;s Growth on Amazon
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
-              We&apos;re here to help you succeed. Let&apos;s unlock your product&apos;s full potential on Amazon.
+            <p className="text-lg text-gray-200 mb-8 max-w-2xl mx-auto">
+              Partner with Pure Sunshine to maximize your product&apos;s potential in the world&apos;s largest marketplace. We handle everything from listing optimization to customer service.
             </p>
             <motion.div
               whileHover={{ scale: 1.05 }}
